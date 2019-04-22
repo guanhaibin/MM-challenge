@@ -17,11 +17,12 @@ Since the data sets were unbalanced in terms of the number of high risk versus t
 The size of the dataset was reduced by filtering out genes that were not differentially expressed. The R Bioconductor **limma** package was used for assessing **differential gene expression** and returned a ranking of the genes. To further perform feature selection, we utilized **SVM-RFECV and MRMR** approaches [Guyon et al., 2002]. 
 To apply the first method, a **support vector machine (SVM)** classifier with a linear kernel was trained using all the features. Then, **recursive feature elimination (RFE)** was applied by using the weight magnitude as a ranking criterion. Smaller subsets (for backward feature elimination) of features were considered by removing lowest ranked features first and cross-validation (CV) was used to determine the optimal number of features. The idea of the second method, **Minimum Redundancy and Maximum Relevance (MRMR)**, is to select a subset of genes so that each gene in the subset has the highest similarity with target vector (maximum relevance), while simultaneously having the lowest similarity with the rest of the genes in the subset (minimum redundancy). Mutual information was used as a measure of similarity. Note that each training data set may have different set of relevant/redundant genes. 
 
-#### Classfiers used to Predict the Group:
-In order to figure out the right model to use, we need to first decide which group a given test data sample belongs to. We therefore trained classifiers to perform this task, where the four training sets, GSE24080UAMS, HOVON65, EMTAB and MMRF, were used to train. 
+#### First step Classfiers used to Predict the Group:
+In order to figure out the right model to use, we need to first decide which group a given test data sample belongs to. We therefore trained classifiers to perform the related tasks with four training sets, GSE24080UAMS, HOVON65, EMTAB and MMRF, respectively. 
 
-#### Baseline Classifiers:
+#### Second Step Classifiers used to predict the risk level:
 The baseline classifiers included **Support Vector Machine (SVM), Neural Network (NN), Random Forest (RF), Gradient Boosting Machine (GBM), Learning Vector Quantization (LVQ) and Generalized Linear Model (GLM)**. The parameters of all baseline models were optimized with cross validation. Then, use a neural network to **ensemble** above mentioned baseline classifiers. 
 
-#### Classifying Test Data: 
-Any missing data in the test data sample was imputed with averaging. Next, the sample is classified into the right group using the group membership classifier mentioned above. Depending on the classification, the appropriate set of classifiers (baseline classifiers followed by the stacking method) are applied to the sample to classify its risk level. 
+#### Test Submission Period: 
+**Extra Step**: Fill in missing data in the test set by imputing with averaging. 
+After that,  classify the test samples into the right group by using the first step classifier mentioned above. Depending on the classifed group, apply the appropriate pretrained models to predict its risk level. 
