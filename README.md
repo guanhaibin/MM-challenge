@@ -11,7 +11,7 @@ In collaboration with Myeloma Genome Project (MGP), clinical variables, patient 
 Applied the same pipeline on each of the four data sets. the four training data sets: GSE24080UAMS, HOVON65, EMTAB and MMRF, 
 
 #### Resampling: 
-Since the data sets were unbalanced in terms of the number of high risk versus the number of low risk subjects, we used an algorithm that creates datasets with balanced distributions by combining oversampling by SMOTE and undersampling by Tomek [Batista et al., 2003]. 
+Since the data sets were unbalanced in terms of the number of high risk versus the number of low risk subjects, we used an algorithm that creates datasets with balanced distributions by combining oversampling by **SMOTE** and undersampling by **Tomek**. 
 
 #### Feature Selection: 
 The size of the dataset was reduced by filtering out genes that were not differentially expressed. The R Bioconductor **limma** package was used for assessing **differential gene expression** and returned a ranking of the genes. To further perform feature selection, we utilized **SVM-RFECV and MRMR** approaches [Guyon et al., 2002]. 
