@@ -24,5 +24,5 @@ In order to figure out the right model to use, we need to first decide which gro
 The baseline classifiers included **Support Vector Machine (SVM), Neural Network (NN), Random Forest (RF), Gradient Boosting Machine (GBM), Learning Vector Quantization (LVQ) and Generalized Linear Model (GLM)**. The parameters of all baseline models were optimized with cross validation. Then, use a neural network to **ensemble** above mentioned baseline classifiers. 
 
 #### Test Submission Period: 
-**Extra Step**: Fill in missing data in the test set by imputing with averaging. 
+**Extra Step**: Fill in missing data in the test set by imputing with averaging.  
 After that,  classify the test samples into the right group by using the first step classifier mentioned above. Depending on the classifed group, apply the appropriate pretrained models to predict its risk level. 
